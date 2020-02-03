@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
     if @user.update(user_params)
       flash[:success] = 'マイページは正常に更新されました'
-      redirect_to @user
+      redirect_to user_path
     else
       flash.now[:danger] = 'マイページは更新されませんでした'
       render :edit
