@@ -18,6 +18,6 @@
 </table>
 
 <div class="text-center">
-  <%= link_to '編集', edit_user_path(@user), class: 'btn btn-light' %>
-  <%= link_to '退会', @user, method: :delete, data: { confirm: "連絡先はすべて削除されます。\n本当に退会してよろしいですか？" }, class: 'btn btn-danger' %>
+  <%= link_to '編集', edit_user_path, class: 'btn btn-light' %>
+  <%= link_to '退会', user_path, method: :delete, data: { confirm: "連絡先はすべて削除されます。\n本当に退会してよろしいですか？" }, class: 'btn btn-danger' %>
 </div>
