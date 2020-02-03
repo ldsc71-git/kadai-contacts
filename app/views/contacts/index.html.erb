@@ -1,0 +1,12 @@
+<div class="text-center">
+  <h1>連絡先一覧</h1>
+</div>
+
+<table class="table table-striped">
+  <% @contacts.each do |contact| %>
+    <tr>
+      <td style="width:50%;"><%= link_to contact.name, contact %></td>
+      <td style="width:50%;" class="d-none d-sm-table-cell"><%= link_to contact.phone, "tel:#{contact.phone}" %></td>
+    </tr>
+  <% end %>
+</table>

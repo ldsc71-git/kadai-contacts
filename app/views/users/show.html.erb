@@ -1,0 +1,23 @@
+<div class="text-center">
+  <h1>マイページ</h1>
+</div>
+
+<table class="table table-bordered">
+  <tr>
+    <th style="width: 30%;">名前</th>
+    <td style="width: 70%;"><%= @user.name %></td>
+  </tr>
+  <tr>
+    <th>電話番号</th>
+    <td><%= @user.phone %></td>
+  </tr>
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= @user.email %></td>
+  </tr>
+</table>
+
+<div class="text-center">
+  <%= link_to '編集', edit_user_path(@user), class: 'btn btn-light' %>
+  <%= link_to '退会', @user, method: :delete, data: { confirm: "連絡先はすべて削除されます。\n本当に退会してよろしいですか？" }, class: 'btn btn-danger' %>
+</div>
