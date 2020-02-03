@@ -22,7 +22,7 @@ class ContactsController < ApplicationController
     else
       @contacts = current_user.contacts.order(name: :asc).page(params[:page])
       flash.now[:danger] = '連絡先の保存に失敗しました。'
-      render contacts_path
+      render :new
     end
   end
   
