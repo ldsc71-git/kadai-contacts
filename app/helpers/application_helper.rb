@@ -3,8 +3,8 @@ module ApplicationHelper
   def get_recipient_user(contact_id)
     contact_user = current_user.contacts.find(contact_id)
     user = User.find_by(phone: contact_user.phone)
-    if user
-      user
+    if user &&  user.contacts.find_by(phone: current_user.phone) # お互いの連絡先に登録されているか確認
+        user
     else
       current_user
     end
