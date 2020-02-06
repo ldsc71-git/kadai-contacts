@@ -5,8 +5,19 @@
 <table class="table table-striped">
   <% @contacts.each do |contact| %>
     <tr>
-      <td style="width:50%;"><%= link_to contact.name, contact %></td>
-      <td style="width:50%;" class="d-none d-sm-table-cell"><%= link_to contact.phone, "tel:#{contact.phone}" %></td>
+      <td style="width:45%;"><%= link_to contact.name, contact %></td>
+      <td style="width:10%;" class="text-right">
+        <% if get_recipient_user(contact.id) != current_user %>
+          <a href="<%= message_path(contact) %>">
+            <% num = count_messages_receiver(contact.id) %>
+            <% if num > 0 %>
+              <span class="badge badge-info"><%= num %></span>
+            <% end %>
+            <i class="far fa-comment"></i>
+          </a>
+        <% end %>
+      </td>
+      <td style="width:45%;" class="d-none d-sm-table-cell"><%= link_to contact.phone, "tel:#{contact.phone}" %></td>
     </tr>
   <% end %>
 </table>

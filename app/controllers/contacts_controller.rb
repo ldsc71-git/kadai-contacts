@@ -47,11 +47,12 @@ class ContactsController < ApplicationController
     flash[:success] = '連絡先を削除しました。'
     redirect_to root_url
   end
-  
+
   
   private
 
   def contact_params
+    params[:contact][:phone].gsub!(/\-/, '')
     params.require(:contact).permit(:name, :phone, :email, :memo, :password, :password_confirmation)
   end
   

@@ -1,0 +1,48 @@
+<div class="text-center">
+  <h1>メッセージ (<%= @contact_user.name %>)</h1>
+</div>
+
+<% @messages.each do |message| %>
+  <% if message.user_id == current_user.id %>
+    <div class="container">
+      <div class="row">
+        <div class="col-8 offset-4 bg-light">
+          <% if count_messages_sender(@contact_user.id, message.id) > 0 %>
+            <i class="far fa-envelope"></i>
+          <% else %>
+            <i class="far fa-envelope-open"></i>
+          <% end %>
+          <%= current_user.name  %>
+          <small>　<%= message.created_at %></small>
+        </div>
+        <div class="col-8 offset-4 bg-light mb-4">
+          <%= message.content %></td>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="container">
+      <div class="row">
+        <div class="col-8 bg-light">
+          <i class="far fa-paper-plane"></i>
+          <%= @contact_user.name %>
+          <small>　<%= message.created_at %></small>
+        </div>
+        <div class="col-8 bg-light mb-4">
+          <%= message.content %></td>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="text-center">
+<%= form_with(model: @message, local: true) do |f| %>
+  <div class="form-group">
+    <%= hidden_field_tag :user_id, @contact_user.id %>
+    <%= f.text_field :content, class: 'form-control' %>
+    <%= link_to '戻る', contact_path(@contact_user), class: 'btn btn-light' %>
+    <%= f.submit '送信', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+</div>

@@ -7,9 +7,9 @@ class Contact < ApplicationRecord
   
   
   validates :name, presence: true, length: { maximum: 50 }
-  validates :phone, presence: true, length: { maximum: 25 },
-                    format: { with: /\A[\d#\*]+\z/ }
-
+  validates :phone, presence: false, length: { maximum: 25 },
+                    format: { with: /\A[\d#\*\-]+\z/ },
+                    :allow_blank => true
 
   validates :email, presence: false, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },

@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   
   resource :user
   resources :contacts
+  resources :messages, only: [:show, :create]
 end
