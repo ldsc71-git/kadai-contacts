@@ -11,8 +11,8 @@ class UsersController < ApplicationController
       qr.save
       url1 = 'https://f4cb7ac819d54829977ddda5880d716b.vfs.cloud9.us-east-1.amazonaws.com'
       url2 = 'https://contacts-0203.herokuapp.com'
-      @qr = 'https://chart.apis.google.com/chart?chs=200x200&cht=qr&chl=' + url1 + '/login/' + code
-      @qr_url = url1 + '/login/' + code
+      @qr = 'https://chart.apis.google.com/chart?chs=200x200&cht=qr&chl=' + url2 + '/login/' + code
+      @qr_url = url2 + '/login/' + code
     end
   end
 
