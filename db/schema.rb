@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_05_090209) do
+ActiveRecord::Schema.define(version: 2020_02_07_062248) do
 
   create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2020_02_05_090209) do
     t.bigint "user_id"
   end
 
+  create_table "qrcodes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "qr"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "qr"], name: "index_qrcodes_on_user_id_and_qr", unique: true
+    t.index ["user_id"], name: "index_qrcodes_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -42,4 +51,5 @@ ActiveRecord::Schema.define(version: 2020_02_05_090209) do
   end
 
   add_foreign_key "contacts", "users"
+  add_foreign_key "qrcodes", "users"
 end

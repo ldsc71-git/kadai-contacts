@@ -13,7 +13,7 @@
             <i class="far fa-envelope-open"></i>
           <% end %>
           <%= current_user.name  %>
-          <small>　<%= message.created_at %></small>
+          <small><%= l(message.created_at.in_time_zone('Tokyo'), format: :short) %></small>
         </div>
         <div class="col-8 offset-4 bg-light mb-4">
           <%= message.content %></td>

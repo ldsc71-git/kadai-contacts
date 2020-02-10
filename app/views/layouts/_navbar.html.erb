@@ -13,10 +13,10 @@
             <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
           </ul>
         <% else %>
-          <% if request.path == login_path %>
-            <li class="list-unstyled"><%= link_to '会員登録', signup_path, class: 'nav-link text-white' %></li>
-          <% else %>
+          <% if request.path == signup_path %>
             <li class="list-unstyled"><%= link_to 'ログイン', login_path, class: 'nav-link text-white' %></li>
+          <% else %>
+            <li class="list-unstyled"><%= link_to '会員登録', signup_path, class: 'nav-link text-white' %></li>
           <% end %>
         <% end %>
       </div>

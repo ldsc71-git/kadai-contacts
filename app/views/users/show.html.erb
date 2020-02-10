@@ -17,7 +17,17 @@
   </tr>
 </table>
 
+<% unless @qr.nil? %>
+  <div class="text-center">
+    <img src='<%= @qr %>' alt='QRcode'>
+    <p>このQRコードをスキャンした相手と連絡先を交換できます。</p>
+    <p><%= @qr_url %></p>
+  </div>
+<% end %>
+
+
 <div class="text-center">
+  <%= link_to 'QRコード', user_path + '/qr', class: 'btn btn-light' %>
   <%= link_to '編集', edit_user_path, class: 'btn btn-light' %>
   <%= link_to '退会', user_path, method: :delete, data: { confirm: "連絡先はすべて削除されます。\n本当に退会してよろしいですか？" }, class: 'btn btn-danger' %>
 </div>

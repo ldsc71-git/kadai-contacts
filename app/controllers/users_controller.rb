@@ -3,6 +3,17 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    if params[:qr] == 'qr'
+      @a = current_user.qrcodes.destroy
+      puts @a
+      code = ('a'..'z').to_a.shuffle[0..10].join # コードを生成
+      qr = current_user.qrcodes.build(qr: code)
+      qr.save
+      url1 = 'https://f4cb7ac819d54829977ddda5880d716b.vfs.cloud9.us-east-1.amazonaws.com'
+      url2 = 'https://contacts-0203.herokuapp.com'
+      @qr = 'https://chart.apis.google.com/chart?chs=200x200&cht=qr&chl=' + url1 + '/login/' + code
+      @qr_url = url1 + '/login/' + code
+    end
   end
 
   def new
@@ -51,4 +62,5 @@ class UsersController < ApplicationController
     params[:user][:phone].gsub!(/\-/, '')
     params.require(:user).permit(:name, :email, :phone, :password, :password_confirmation)
   end
+
 end

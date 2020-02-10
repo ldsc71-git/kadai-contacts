@@ -4,8 +4,8 @@
 
 <div class="row">
   <div class="col-sm-6 offset-sm-3">
-
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+        <%= f.hidden_field :qr, value: session[:qr] %><%= session[:qr] %>
 
       <div class="form-group">
         <%= f.label :email, 'Eメール' %>
