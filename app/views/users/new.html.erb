@@ -8,7 +8,7 @@
     <%= form_with(model: @user, url:user_path, local: true) do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
       
-      <%= f.hidden_field :qr, value: session[:qr] %><%= session[:qr] %>
+      <%= f.hidden_field :qr, value: session[:qr] %>
       
       <div class="form-group">
         <%= f.label :name, '名前' %>

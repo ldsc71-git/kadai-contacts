@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :contacts, dependent: :destroy
   
   has_many :messages, dependent: :destroy
-  has_many :qrcodes, dependent: :destroy
+#  has_many :qrcodes, dependent: :destroy
 
 #  has_many :user_messages, dependent: :destroy
 #  has_many :conversations, through: :user_messages, source: :message, dependent: :destroy
